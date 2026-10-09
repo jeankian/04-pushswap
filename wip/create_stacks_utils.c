@@ -6,7 +6,7 @@
 /*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 21:33:43 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/09 19:37:27 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/09 21:19:33 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_stack_addback(t_stack **stack, t_stack *new_element)
 	t_stack	*last;
 
 	if (!stack || !new_element)
-		return (NULL);
+		return ;
 	if (!(*stack))
 	{
 		*stack = new_element;
@@ -49,15 +49,14 @@ void	ft_stack_addback(t_stack **stack, t_stack *new_element)
 	last->next = new_element;
 }
 
-void	ft_stack_delone(t_stack *element, void (*del)(void *))
+void	ft_stack_delone(t_stack *element)
 {
 	if (!element)
 		return ;
-	del(element->content);
 	free(element);
 }
 
-void	ft_stack_clear(t_stack **stack, void (*del)(void *))
+void	ft_stack_clear(t_stack **stack)
 {
 	t_stack	*temp;
 
@@ -67,6 +66,6 @@ void	ft_stack_clear(t_stack **stack, void (*del)(void *))
 	{
 		temp = *stack;
 		*stack = (*stack)->next;
-		ft_stack_delone(temp, del);
+		ft_stack_delone(temp);
 	}
 }
