@@ -1,0 +1,49 @@
+#include <unistd.h> //write
+#include <stdlib.h> //atoi, calloc, malloc, free
+
+#include <stddef.h> //size_t
+#include <stdint.h> //size_max, size_min
+#include <limits.h> //using INT_MAX or MIN
+
+#include <stdio.h> //printf
+
+#include <ctype.h> //char class
+#include <string.h> //string/mem
+
+---
+input must b int within range
+
+flags: --simple, --medium, --complex, --adaptive, and --bench
+must recognise these as options, not reject them as "not integers". Check them first, then validate the remaining arguments as numbers
+
+ft_putstr_fd("Error\n", 2);
+for not integers, integers outside valid range, duplicate values
+edge cases like +, an empty string, or -0?
+
+If no parameters are specified, the program must not display anything and give the prompt back.
+
+
+do nothing:
+./push_swap
+./push_swap 3
+
+ERROR:
+./push_swap ""
+./push_swap 3 ""
+
+./push_swap --simple
+./push_swap --simple 2
+./push_swap 3 --simple 2
+
+
+
+./a.out 4 67 4
+argv 0  1 2  3
+argc is 3
+
+
+
+in parse(), **argv/*argv[0] is ./a.out 11 22 33, *argv/argv[1] is 11
+in parse(), **argv/*argv[0] is ./a.out "11 22 33", *argv/argv[1] is "11 22 33"
+
+in is_int_range(), *argv is 11, argv[0] is 1 
