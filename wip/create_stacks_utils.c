@@ -6,11 +6,12 @@
 /*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 21:33:43 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/08 22:18:23 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/09 19:37:27 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 t_stack	*ft_stack_new(int content)
 {
