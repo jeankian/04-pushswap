@@ -6,7 +6,7 @@
 /*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 19:38:45 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/09 21:20:28 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/09 23:47:24 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 // -sort array
 // -match stack and array
 // -indexing stack
+void	sort_array(int *array, int array_size)
+{
+	quicksort_array(array, 0, array_size - 1);
+}
 
 t_stack	*build_stack(int *array, int array_size)
 {
@@ -39,11 +43,29 @@ t_stack	*build_stack(int *array, int array_size)
 	}
 	return (stack);
 }
-
+// print out sorted array
 // #include <stdio.h>
 // int	main(void)
 // {
-// 	int array[] = {9, 3, 4, 1, 2};
+// 	int array[] = {9, 3, 4, 1, 2, 5, 7, -12};
+// 	int array_size;
+// 	int	i;
+
+// 	array_size = sizeof(array)/sizeof(array[0]);
+// 	i = 0;
+// 	sort_array(array, array_size);
+// 	while (i < array_size)
+// 	{
+// 		printf("%i, ", array[i]);
+// 		i++;
+// 	}
+// }
+
+// print out stack
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	int array[] = {9, 3, 4, 1, 2, 5, 7, -12};
 // 	int array_size;
 // 	int	i;
 // 	t_stack	*stack;
