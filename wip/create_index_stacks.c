@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/09 19:38:45 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/10 11:49:07 by xin-jili         ###   ########.fr       */
+/*   Created: 2026/10/10 12:37:18 by xin-jili          #+#    #+#             */
+/*   Updated: 2026/10/10 12:37:20 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	sort_array(int *array, int array_size)
+static void	sort_array(int *array, int array_size)
 {
 	quicksort_array(array, 0, array_size - 1);
 }
@@ -40,7 +40,7 @@ t_stack	*build_stack(int *array, int array_size)
 	return (stack);
 }
 
-int	find_index(int content, int *array, int array_size)
+static int	find_index(int content, int *array, int array_size)
 {
 	int	index;
 
@@ -84,7 +84,7 @@ void	index_stack(t_stack *stack, int *array, int array_size)
 // 	}
 // }
 
-// print out stack
+//print out stack
 // #include <stdio.h>
 // int	main(void)
 // {

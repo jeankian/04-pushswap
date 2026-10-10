@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stacks_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
+/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/08 21:33:43 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/09 21:19:33 by xin-jili@st      ###   ########.fr       */
+/*   Created: 2026/10/10 12:37:26 by xin-jili          #+#    #+#             */
+/*   Updated: 2026/10/10 12:37:27 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
