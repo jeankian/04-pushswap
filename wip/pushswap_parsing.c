@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#include <stdio.h>
+
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
@@ -205,80 +207,104 @@ char	**ft_split(const char *s, char c)
 
 /* ************************************************************************** */
 
-void	*cleanup_split(char **split_args)
+void	*cleanup_tree(char **tree)
 {
 	size_t	i;
 
-	if (split_args == NULL)
+	if (tree == NULL)
 		return (NULL);
 	i = 0;
-	while (split_args[i])
+	while (tree[i])
 	{
-		free(split_args[i]);
+		free(tree[i]);
 		i++;
 	}
-	free(split_args);
+	free(tree);
 	return (NULL);
 }
 
-int	is_not_dup(char **argv, int i)
+int	is_int(char *argv)
 {
-	int	current;
-	int	start;
-
-	current = ft_atoi(argv[i]);
-	start = 0;
-	while (start < i)
-	{
-		if (ft_atoi(argv[start]) == current)
-			return (0);
-		start++;
-	}
-	return (1);
-}
-
-int	is_int_range(char *argv)
-{
-	long long	res;
+	long long	num;
 	int	i;
 	int	sign;
 
-	i = 0;
-	sign = 1;
-	if (argv[i] == '-')
-	{
-		sign = -sign;
-		i++;
-	}
-	else if (argv[i] == '+')
-		i++;
-	res = 0;
-	while (argv[i])
-	{
-		res = res * 10 + (argv[i] - '0');
-		if (res * sign < INT_MIN || res * sign > INT_MAX)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int is_digit(char *argv)
-{
-	size_t i;
-
 	if (argv == NULL || *argv == '\0')
 		return (0);
+	
 	i = 0;
+	sign = 1;
 	if ((argv[i] == '-' || argv[i] == '+') && (ft_isdigit(argv[i + 1])))
+	{
+		if (argv[i] == '-')
+			sign = -sign;
 		i++;
+	}
+	num = 0;
 	while (argv[i])
 	{
 		if (!ft_isdigit(argv[i]))
 			return (0);
+		num = num * 10 + (argv[i] - '0');
+		if (num * sign < INT_MIN || num * sign > INT_MAX)
+			return (0);
 		i++;
 	}
 	return (1);
+}
+
+int *str_to_int_array(char **numstr, int array_size)
+{
+	int *array;
+	int	i;
+
+	array = malloc(array_size * sizeof(int));
+	if (!array)
+		return (NULL);
+	i = 0;
+	while (i < array_size)
+	{
+		if (!is_int(numstr[i]))
+		{
+			free(array);
+			return (NULL);
+		}
+		array[i] = ft_atoi(numstr[i]);
+		i++;
+	}
+	return (array);
+}
+
+int *parse_multi_arg(int argc, char **argv, int index, int *array_size)
+{
+	int *array;
+
+	*array_size = argc - index;
+	array = str_to_int_array(argv + index, *array_size);
+	return (array);
+}
+
+int *parse_single_arg(char *argv, int *array_size)
+{
+	char **numstr;
+	int *array;
+	int	i;
+
+	numstr = ft_split(argv, ' ');
+	if (!numstr)
+		return (NULL);
+	i = 0;
+	while (numstr[i])
+		i++;
+	if (i == 0)
+	{
+		cleanup_tree(numstr);
+		return (NULL);
+	}
+	*array_size = i;
+	array = str_to_int_array(numstr, *array_size);
+	cleanup_tree(numstr);
+	return (array);
 }
 
 int is_flag(char *argv)
@@ -295,80 +321,70 @@ int is_flag(char *argv)
 	return (0);
 }
 
-int	parse(int argvc, char **argv)
+int	is_not_dup(int *array, int array_size)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < array_size)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (array[i] != array[j])
+				j++;
+			else
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+
+int *parsing(int argc, char **argv, int index)
+{
+	int *array;
+	int array_size;
+
+	array_size = 0;
+	if (argv[index + 1] == NULL)
+		array = parse_single_arg(argv[index], &array_size);
+	else
+		array = parse_multi_arg(argc, argv, index, &array_size);
+	if (array == NULL || array_size == 0 || !is_not_dup(array, array_size))
+	{
+		free(array);
+		return (NULL);
+	}
+	return (array);
+}
+
+int	process_args(int argc, char **argv)
 {
 	int i;
-	char *joined_args;
-	char *new;
-	char *tmp;
-	char **split_args;
+	int	*array;
 
-	if (argvc < 2)
+	if (argc < 2)
 		return (1);
-	
 	i = 1;
 	while (is_flag(argv[i]))
 	{
 		i++;
 		if (argv[i] == NULL)
-				return (1);
+			return (1);
 	}
-
-	joined_args = ft_calloc(1, 1);
-	if (joined_args == NULL)
+	array = parsing(argc, argv, i);
+	if (!array)
 		return (0);
-	
-	while (argv[i])
-	{
-		if (argv[i][0] == '\0')
-			return (0);
-		tmp = ft_strjoin(argv[i], " ");
-		if (tmp == NULL)
-		{
-			free(joined_args);
-			return (0);
-		}
-		new = ft_strjoin(joined_args, tmp);
-		if (new == NULL)
-		{
-			free(joined_args);
-			free(tmp);
-			return (0);
-		}
-		free(joined_args);
-		free(tmp);
-		joined_args = new;
-		i++;
-	}
-
-	split_args = ft_split(joined_args, ' ');
-	free(joined_args);
-	if (split_args == NULL)
-		return (0);
-
-	if (split_args[0] == NULL)
-	{
-		cleanup_split(split_args);
-		return (0);
-	}
-
-	i = 0;
-	while (split_args[i])
-	{
-		if (!is_digit(split_args[i]) || !is_int_range(split_args[i]) || !is_not_dup(split_args, i))
-		{
-			cleanup_split(split_args);
-			return (0);
-		}
-		i++;
-	}
-	cleanup_split(split_args);
+	free(array);
 	return (1);
 }
 
-int	main(int argvc, char **argv)
+int	main(int argc, char **argv)
 {
-	if (parse(argvc, argv) == 1)
+	if (process_args(argc, argv) == 1)
 		ft_putstr_fd("Parsing successful\n", 1);
 	else
 		ft_putstr_fd("Parsing failed\n", 2);
