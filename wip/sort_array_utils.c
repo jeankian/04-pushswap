@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_array_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
+/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 23:30:30 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/09 23:42:52 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/10 11:49:23 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	swap_values(int *x, int *y)
 	*x = *y;
 	*y = temp;
 }
+
 static int	partition(int *array, int low, int high)
 {
 	int	pivot_value;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_index_stacks.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
+/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 19:38:45 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/10 00:29:48 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/10 11:49:07 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	find_index(int content, int *array, int array_size)
 	while (index < array_size)
 	{
 		if (content == array[index])
-			break;
+			break ;
 		index++;
 	}
 	return (index);
@@ -83,7 +83,6 @@ void	index_stack(t_stack *stack, int *array, int array_size)
 // 		i++;
 // 	}
 // }
-
 
 // print out stack
 // #include <stdio.h>
