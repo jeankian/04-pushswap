@@ -1,3 +1,7 @@
+#include "push_swap.h"
+#include <stdlib.h>
+#include <limits.h>
+
 int is_flag(char *argv)
 {
 	size_t len;
@@ -36,7 +40,6 @@ int	is_int(char *argv)
 
 	if (argv == NULL || *argv == '\0')
 		return (0);
-	
 	i = 0;
 	sign = 1;
 	if ((argv[i] == '-' || argv[i] == '+') && (ft_isdigit(argv[i + 1])))

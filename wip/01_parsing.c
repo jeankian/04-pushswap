@@ -1,4 +1,5 @@
-
+#include "push_swap.h"
+#include <stdlib.h>
 
 int *parse_multi_arg(int argc, char **argv, int index, int *array_size)
 {
