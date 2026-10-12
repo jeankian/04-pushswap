@@ -6,7 +6,7 @@
 /*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:31 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/10 16:18:37 by xin-jili         ###   ########.fr       */
+/*   Updated: 2026/10/12 12:11:29 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }	t_stack;
+
+//parsing utils
+int		is_flag(char *argv);
+void	*cleanup_tree(char **tree);
+int		is_int(char *argv);
+int		*str_to_int_array(char **numstr, int array_size);
+int		is_not_dup(int *array, int array_size);
 
 //create stacks utils
 t_stack	*ft_stack_new(int content);

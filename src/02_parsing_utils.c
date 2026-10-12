@@ -1,6 +1,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 #include <limits.h>
+#include "libft.h"
 
 int is_flag(char *argv)
 {

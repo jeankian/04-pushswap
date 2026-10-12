@@ -1,7 +1,8 @@
 #include "push_swap.h"
 #include <stdlib.h>
+#include "libft.h"
 
-int *parse_multi_arg(int argc, char **argv, int index, int *array_size)
+static int *parse_multi_arg(int argc, char **argv, int index, int *array_size)
 {
 	int *array;
 
@@ -10,7 +11,7 @@ int *parse_multi_arg(int argc, char **argv, int index, int *array_size)
 	return (array);
 }
 
-int *parse_single_arg(char *argv, int *array_size)
+static int *parse_single_arg(char *argv, int *array_size)
 {
 	char **numstr;
 	int *array;
