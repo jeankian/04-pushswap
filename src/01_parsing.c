@@ -34,7 +34,7 @@ static int *parse_single_arg(char *argv, int *array_size)
 	return (array);
 }
 
-int *parsing(int argc, char **argv, int index)
+void	parsing(int argc, char **argv, int index, t_stack **stack_a)
 {
 	int *array;
 	int array_size;
@@ -47,15 +47,21 @@ int *parsing(int argc, char **argv, int index)
 	if (array == NULL || array_size == 0 || !is_not_dup(array, array_size))
 	{
 		free(array);
-		return (NULL);
+		return ;
 	}
-	return (array);
+	*stack_a = build_stack(array, array_size);
+	if (!(*stack_a))
+	{
+		free(array);
+		return ;
+	}
+	index_stack(*stack_a, array, array_size);
+	free(array);
 }
 
-int	process_args(int argc, char **argv)
+int	process_args(int argc, char **argv, t_stack **stack_a)
 {
 	int i;
-	int	*array;
 
 	if (argc < 2)
 		return (1);
@@ -66,19 +72,25 @@ int	process_args(int argc, char **argv)
 		if (argv[i] == NULL)
 			return (1);
 	}
-	array = parsing(argc, argv, i);
-	if (!array)
-		return (0);
-	free(array);
+	parsing(argc, argv, i, stack_a);
 	return (1);
 }
 
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
-	if (process_args(argc, argv) == 1)
+	t_stack		*stack_a;
+
+	stack_a = NULL;
+	if (process_args(argc, argv, &stack_a) == 1)
 		ft_putstr_fd("Parsing successful\n", 1);
 	else
 		ft_putstr_fd("Parsing failed\n", 2);
-
+	t_stack	*ptr = stack_a;
+	while (ptr != NULL)
+	{
+		printf("%d, ", ptr->index);
+		ptr = ptr->next;
+	}
 	return(0);
 }
