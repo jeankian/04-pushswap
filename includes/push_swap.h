@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:31 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/14 11:27:13 by xin-jili         ###   ########.fr       */
+/*   Updated: 2026/10/16 21:55:33 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		is_not_dup(int *array, int array_size);
 t_stack	*ft_stack_new(int content);
 t_stack	*ft_stack_last(t_stack *stack);
 void	ft_stack_addback(t_stack **stack, t_stack *new_element);
-void	ft_stack_delone(t_stack *element);
+void	ft_stack_addfront(t_stack **stack, t_stack *new_element);
 void	ft_stack_clear(t_stack **stack);
 
 //create index stacks

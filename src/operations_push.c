@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 13:31:46 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/14 14:02:18 by xin-jili         ###   ########.fr       */
+/*   Updated: 2026/10/16 22:19:34 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	if (!(*stack_b))
 		return ;
 	temp = (*stack_b)->next;
-	(*stack_b)->next = *stack_a;
-	*stack_a = *stack_b;
+	ft_stack_addfront(stack_a, *stack_b);
 	*stack_b = temp;
 }
 
@@ -31,8 +30,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	if (!(*stack_a))
 		return ;
 	temp = (*stack_a)->next;
-	(*stack_a)->next = *stack_b;
-	*stack_b = *stack_a;
+	ft_stack_addfront(stack_b, *stack_a);
 	*stack_a = temp;
 }
 
