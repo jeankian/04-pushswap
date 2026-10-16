@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stacks_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:26 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/10 12:37:27 by xin-jili         ###   ########.fr       */
+/*   Updated: 2026/10/16 22:35:08 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ void	ft_stack_addback(t_stack **stack, t_stack *new_element)
 	last->next = new_element;
 }
 
-void	ft_stack_delone(t_stack *element)
+void	ft_stack_addfront(t_stack **stack, t_stack *new_element)
 {
-	if (!element)
+	if (!stack || !new_element)
 		return ;
-	free(element);
+	new_element->next = *stack;
+	*stack = new_element;
 }
 
 void	ft_stack_clear(t_stack **stack)
@@ -66,6 +67,6 @@ void	ft_stack_clear(t_stack **stack)
 	{
 		temp = *stack;
 		*stack = (*stack)->next;
-		ft_stack_delone(temp);
+		free(temp);
 	}
 }

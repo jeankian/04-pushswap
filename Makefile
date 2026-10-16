@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+         #
+#    By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/12 11:18:39 by xin-jili          #+#    #+#              #
-#    Updated: 2026/10/14 10:34:59 by xin-jili         ###   ########.fr        #
+#    Updated: 2026/10/16 22:32:23 by xin-jili@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,10 @@ LIBFT = $(LIBFT_PATH)/libft.a
 all: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(OBJ_DIR)
-	$(CC) $(CCFLAG) -I$(INCLUDES) -I$(LIBFT_PATH) -c $< -o $@
+	$(CC) $(CCFLAGS) -I$(INCLUDES) -I$(LIBFT_PATH) -c $< -o $@
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CCFLAG) $(OBJ) $(LIBFT) -o $@
+	$(CC) $(CCFLAGS) $(OBJ) $(LIBFT) -o $@
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
@@ -54,4 +54,4 @@ fclean: clean
 
 re: fclean all
 
-./PHONY: all clean fclean re
+.PHONY: all clean fclean re
