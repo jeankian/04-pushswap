@@ -34,7 +34,7 @@ static int *parse_single_arg(char *argv, int *array_size)
 	return (array);
 }
 
-void	parsing(int argc, char **argv, int index, t_stack **stack_a)
+int	parsing(int argc, char **argv, int index, t_stack **stack_a)
 {
 	int *array;
 	int array_size;
@@ -47,16 +47,17 @@ void	parsing(int argc, char **argv, int index, t_stack **stack_a)
 	if (array == NULL || array_size == 0 || !is_not_dup(array, array_size))
 	{
 		free(array);
-		return ;
+		return (0);
 	}
 	*stack_a = build_stack(array, array_size);
 	if (!(*stack_a))
 	{
 		free(array);
-		return ;
+		return (0);
 	}
 	index_stack(*stack_a, array, array_size);
 	free(array);
+	return (1);
 }
 
 int	process_args(int argc, char **argv, t_stack **stack_a)
@@ -72,7 +73,8 @@ int	process_args(int argc, char **argv, t_stack **stack_a)
 		if (argv[i] == NULL)
 			return (1);
 	}
-	parsing(argc, argv, i, stack_a);
+	if (!parsing(argc, argv, i, stack_a))
+		return (0);
 	return (1);
 }
 
