@@ -6,7 +6,7 @@
 #    By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/12 11:18:39 by xin-jili          #+#    #+#              #
-#    Updated: 2026/10/16 22:32:23 by xin-jili@st      ###   ########.fr        #
+#    Updated: 2026/10/16 22:06:06 by xin-jili@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ OBJ_DIR = obj
 INCLUDES = includes
 
 SRC := 01_parsing.c 02_parsing_utils.c create_index_stacks.c \
-		create_stacks_utils.c sort_array_utils.c
+		create_stacks_utils.c sort_array_utils.c \
+		operations_push.c operations_reverse_rotate.c
 
 SRC := $(SRC:%.c=$(SRC_DIR)/%.c)
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

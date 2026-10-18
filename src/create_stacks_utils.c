@@ -6,7 +6,7 @@
 /*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:26 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/16 22:35:08 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/16 21:54:12 by xin-jili@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_stack_addback(t_stack **stack, t_stack *new_element)
 	last = ft_stack_last(*stack);
 	last->next = new_element;
 }
-
 void	ft_stack_addfront(t_stack **stack, t_stack *new_element)
 {
 	if (!stack || !new_element)
