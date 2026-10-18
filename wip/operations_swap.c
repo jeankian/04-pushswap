@@ -16,21 +16,28 @@ static void	swap_top(t_stack **stack)
 	second->next = first;
 	*stack = second;
 }
-void	sa(t_stack **a)
+
+void	sa(t_data *data)
 {
-	swap_top(a);
+	swap_top(&data->stack_a);
+	data->count_sa++;
+	data->count_total++;
 	ft_putstr_fd("sa\n", 1);
 }
 
-void	sb(t_stack **b)
+void	sb(t_data *data)
 {
-	swap_top(b);
+	swap_top(&data->stack_b);
+	data->count_sb++;
+	data->count_total++;
 	ft_putstr_fd("sb\n", 1);
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_data *data)
 {
-	swap_top(a);
-	swap_top(b);
+	swap_top(&data->stack_a);
+	swap_top(&data->stack_b);
+	data->count_ss++;
+	data->count_total++;
 	ft_putstr_fd("ss\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: jkian <jkian@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:31 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/18 13:06:37 by jkian            ###   ########.fr       */
+/*   Updated: 2026/10/18 16:53:00 by jkian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_data
 	int			count_rra;
 	int			count_rrb;
 	int			count_rrr;
+	int			count_total;
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 }	t_data;
@@ -57,5 +58,18 @@ void	index_stack(t_stack *stack, int *array, int array_size);
 
 //sort array utils
 void	quicksort_array(int *array, int low, int high);
+
+//operations
+void	pa(t_stack **stack_a, t_stack **stack_b);
+void	pb(t_stack **stack_a, t_stack **stack_b);
+void	rra(t_stack **stack_a);
+void	rrb(t_stack **stack_b);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
 
 #endif

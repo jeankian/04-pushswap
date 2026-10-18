@@ -19,66 +19,27 @@ static void	rotate_top(t_stack **stack)
 	first->next = NULL;
 }
 
-void	ra(t_stack **a)
+void	ra(t_data *data)
 {
-	rotate_top(a);
+	rotate_top(&data->stack_a);
+	data->count_ra++;
+	data->count_total++;
 	ft_putstr_fd("ra\n", 1);
 }
 
-void	rb(t_stack **b)
+void	rb(t_data *data)
 {
-	rotate_top(b);
+	rotate_top(&data->stack_b);
+	data->count_rb++;
+	data->count_total++;
 	ft_putstr_fd("rb\n", 1);
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_data *data)
 {
-	rotate_top(a);
-	rotate_top(b);
+	rotate_top(&data->stack_a);
+	rotate_top(&data->stack_b);
+	data->count_rr++;
+	data->count_total++;
 	ft_putstr_fd("rr\n", 1);
 }
-
-// void	print_stack(t_stack *x)
-// {
-
-// 	while (x != NULL)
-// 	{
-// 		ft_putnbr_fd(x->content, 1);
-// 		ft_putchar_fd(' ', 1);
-// 		x = x->next;
-// 	}
-// 	ft_putchar_fd('\n', 1);
-// }
-
-// int	main(void)
-// {
-// 	int	array[] = {5, 3, 1, 0};
-// 	int	array_size;
-// 	t_stack *a;
-// 	t_stack *b;
-
-// 	array_size = 4;
-// 	a = build_stack(array, array_size);
-// 	b = NULL;
-
-// 	print_stack(a);
-// 	sa(&a);
-// 	print_stack(a);
-// 	sb(&b);
-// 	print_stack(b);
-// 	ss(&a, &b);
-// 	print_stack(a);
-// 	print_stack(b);
-
-// 	ra(&a);
-// 	print_stack(a);
-// 	rb(&b);
-// 	print_stack(b);
-// 	rr(&a, &b);
-// 	print_stack(a);
-// 	print_stack(b);
-
-// 	ft_stack_clear(&a);
-// 	ft_stack_clear(&b);
-// 	return (0);
-// }
