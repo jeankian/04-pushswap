@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
+/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 13:31:46 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/16 22:19:34 by xin-jili@st      ###   ########.fr       */
+/*   Updated: 2026/10/18 14:21:41 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
@@ -23,7 +23,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = temp;
 }
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
@@ -45,7 +45,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 
 // 	stack_a = build_stack(array_a, 3);
 // 	stack_b = build_stack(array_b, 3);
-// 	push_b(&stack_a, &stack_b);
+// 	pb(&stack_a, &stack_b);
 // 	t_stack	*ptr_a = stack_a;
 // 	printf("stack_a\n");
 // 	while (ptr_a)

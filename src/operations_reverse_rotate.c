@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   operations_reverse_rotate.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili@student.42kl.edu.my <xin-jili>    +#+  +:+       +#+        */
+/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/16 21:45:12 by xin-jili@st       #+#    #+#             */
-/*   Updated: 2026/10/16 22:13:16 by xin-jili@st      ###   ########.fr       */
+/*   Created: 2026/10/18 14:20:55 by xin-jili          #+#    #+#             */
+/*   Updated: 2026/10/18 14:20:57 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	reverse_rotate_a(t_stack **stack_a)
+void	rra(t_stack **stack_a)
 {
 	t_stack	*last;
 	t_stack	*second_last;
@@ -25,7 +25,7 @@ void	reverse_rotate_a(t_stack **stack_a)
 		second_last = second_last->next;
 	second_last->next = NULL;
 }
-void	reverse_rotate_b(t_stack **stack_b)
+void	rrb(t_stack **stack_b)
 {
 	t_stack	*last;
 	t_stack	*second_last;
@@ -38,10 +38,10 @@ void	reverse_rotate_b(t_stack **stack_b)
 	second_last->next = NULL;
 }
 
-void	reverse_rotate_r(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
+	rra(stack_a);
+	rrb(stack_b);
 }
 
 // #include <stdio.h>
@@ -55,9 +55,9 @@ void	reverse_rotate_r(t_stack **stack_a, t_stack **stack_b)
 
 // 	stack_a = build_stack(array_a, 3);
 // 	stack_b = build_stack(array_b, 3);
-// 	reverse_rotate_a(&stack_a);
-// 	reverse_rotate_b(&stack_b);
-// 	reverse_rotate_r(&stack_a, &stack_b);
+// 	rra(&stack_a);
+// 	rrb(&stack_b);
+// 	rrr(&stack_a, &stack_b);
 // 	t_stack	*ptr_a = stack_a;
 // 	printf("stack_a\n");
 // 	while (ptr_a)
