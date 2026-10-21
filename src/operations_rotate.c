@@ -19,22 +19,28 @@ static void	rotate_top(t_stack **stack)
 	first->next = NULL;
 }
 
-void	ra(t_stack **a)
+void	ra(t_data *data)
 {
-	rotate_top(a);
+	rotate_top(&data->stack_a);
+	data->operations.count_ra++;
+	data->operations.count_total++;
 	ft_putstr_fd("ra\n", 1);
 }
 
-void	rb(t_stack **b)
+void	rb(t_data *data)
 {
-	rotate_top(b);
+	rotate_top(&data->stack_b);
+	data->operations.count_rb++;
+	data->operations.count_total++;
 	ft_putstr_fd("rb\n", 1);
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_data *data)
 {
-	rotate_top(a);
-	rotate_top(b);
+	rotate_top(&data->stack_a);
+	rotate_top(&data->stack_b);
+	data->operations.count_rr++;
+	data->operations.count_total++;
 	ft_putstr_fd("rr\n", 1);
 }
 

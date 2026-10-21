@@ -6,7 +6,7 @@
 /*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 19:13:53 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/08/21 15:43:26 by xin-jili         ###   ########.fr       */
+/*   Updated: 2026/10/20 17:29:15 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,10 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+
+//ft_rpintf
+int				ft_printf(const char *format, ...);
+char			*get_next_line(int fd);
+char			*get_next_line(int fd);
 
 #endif

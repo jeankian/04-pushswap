@@ -77,22 +77,42 @@ int	process_args(int argc, char **argv, t_stack **stack_a)
 		return (0);
 	return (1);
 }
+void	print_stack(t_stack *stack)
+{
 
-#include <stdio.h>
+	while (stack != NULL)
+	{
+		ft_putnbr_fd(stack->content, 1);
+		ft_putchar_fd(' ', 1);
+		stack = stack->next;
+	}
+	ft_putchar_fd('\n', 1);
+}
+
 int	main(int argc, char **argv)
 {
-	t_stack		*stack_a;
+	t_data	data;
 
-	stack_a = NULL;
-	if (process_args(argc, argv, &stack_a) == 1)
-		ft_putstr_fd("Parsing successful\n", 1);
+	ft_bzero(&data,sizeof(data));
+
+	if (process_args(argc, argv, &data.stack_a) == 1)
+		ft_printf("Parsing successful\n");
 	else
-		ft_putstr_fd("Parsing failed\n", 2);
-	t_stack	*ptr = stack_a;
+		ft_printf("Parsing failed\n");
+	
+	t_stack	*ptr = data.stack_a;
+
 	while (ptr != NULL)
 	{
-		printf("%d, ", ptr->index);
+		ft_printf("%d, ", ptr->index);
 		ptr = ptr->next;
 	}
+	
+	ft_printf("\n");
+	print_stack(data.stack_a);
+	sa(&data);
+	print_stack(data.stack_a);
+
+	ft_stack_clear(&data.stack_a);
 	return(0);
 }
