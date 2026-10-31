@@ -89,30 +89,30 @@ void	print_stack(t_stack *stack)
 	ft_putchar_fd('\n', 1);
 }
 
-int	main(int argc, char **argv)
-{
-	t_data	data;
+// int	main(int argc, char **argv)
+// {
+// 	t_data	data;
 
-	ft_bzero(&data,sizeof(data));
+// 	ft_bzero(&data,sizeof(data));
 
-	if (process_args(argc, argv, &data.stack_a) == 1)
-		ft_printf("Parsing successful\n");
-	else
-		ft_printf("Parsing failed\n");
+// 	if (process_args(argc, argv, &data.stack_a) == 1)
+// 		ft_printf("Parsing successful\n");
+// 	else
+// 		ft_printf("Parsing failed\n");
 	
-	t_stack	*ptr = data.stack_a;
+// 	t_stack	*ptr = data.stack_a;
 
-	while (ptr != NULL)
-	{
-		ft_printf("%d, ", ptr->index);
-		ptr = ptr->next;
-	}
+// 	while (ptr != NULL)
+// 	{
+// 		ft_printf("%d, ", ptr->index);
+// 		ptr = ptr->next;
+// 	}
 	
-	ft_printf("\n");
-	print_stack(data.stack_a);
-	sa(&data);
-	print_stack(data.stack_a);
+// 	ft_printf("\n");
+// 	print_stack(data.stack_a);
+// 	sa(&data);
+// 	print_stack(data.stack_a);
 
-	ft_stack_clear(&data.stack_a);
-	return(0);
-}
+// 	ft_stack_clear(&data.stack_a);
+// 	return(0);
+// }

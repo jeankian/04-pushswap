@@ -6,13 +6,15 @@
 /*   By: jkian <jkian@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 14:20:55 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/31 15:17:56 by jkian            ###   ########.fr       */
+/*   Updated: 2026/10/31 15:25:07 by jkian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 #include "libft.h"
+
+//added line 23
 
 void	reverse_rotate(t_stack **stack)
 {

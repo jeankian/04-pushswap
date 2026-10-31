@@ -76,14 +76,20 @@ int	main()
 {
 	int	array [] = {1, 23, 5, 33, 0};
 	t_stack	*ptr;
+	int lo = 2;
+	int hi = 3;
 
 	ptr = build_stack(array, 5);
+	index_stack(ptr, array, 5);
 
 	ft_printf("%d\n", get_stack_size(ptr));
 	ft_printf("%d\n", get_stack_size(NULL));
 
 	ft_printf("%d\n", get_chunk_size(500));
-	ft_printf("%d\n", is_index_in_range(0, 0, 10));
+
+	ft_printf("%d\n", is_index_in_range(0, lo, hi));
+	ft_printf("%d\n", find_first(ptr, lo, hi));
+
 	ft_stack_clear(&ptr);
 	return (0);
 }
