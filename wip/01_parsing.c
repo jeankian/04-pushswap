@@ -1,7 +1,6 @@
 #include "push_swap.h"
 #include <stdlib.h>
 #include "libft.h"
-#include "ft_printf.h"
 
 static int *parse_multi_arg(int argc, char **argv, int index, int *array_size)
 {
@@ -78,7 +77,6 @@ int	process_args(int argc, char **argv, t_stack **stack_a)
 		return (0);
 	return (1);
 }
-
 void	print_stack(t_stack *stack)
 {
 
@@ -90,7 +88,6 @@ void	print_stack(t_stack *stack)
 	}
 	ft_putchar_fd('\n', 1);
 }
-
 
 int	main(int argc, char **argv)
 {

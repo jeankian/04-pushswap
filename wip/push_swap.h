@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkian <jkian@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:31 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/18 16:53:00 by jkian            ###   ########.fr       */
+/*   Updated: 2026/10/21 13:16:36 by xin-jili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_data
+typedef struct s_ops
 {
 	int			count_sa;
 	int			count_sb;
@@ -34,8 +34,13 @@ typedef struct s_data
 	int			count_rrb;
 	int			count_rrr;
 	int			count_total;
-	t_stack		*stack_a;
-	t_stack		*stack_b;
+}	t_ops;
+
+typedef struct s_data
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_ops	operations;
 }	t_data;
 
 //parsing utils
@@ -60,11 +65,11 @@ void	index_stack(t_stack *stack, int *array, int array_size);
 void	quicksort_array(int *array, int low, int high);
 
 //operations
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
+void	pa(t_data *data);
+void	pb(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 void	sa(t_data *data);
 void	sb(t_data *data);
 void	ss(t_data *data);
