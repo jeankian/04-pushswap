@@ -37,7 +37,7 @@ int	is_index_in_range(int index, int lo, int hi)
 
 
 
-int	find_first(t_stack *stack, int lo, int hi)
+int	find_first_pos(t_stack *stack, int lo, int hi)
 {
 	int	position;
 
@@ -52,7 +52,7 @@ int	find_first(t_stack *stack, int lo, int hi)
 	return (-1);
 }
 
-int	find_last(t_stack *stack, int lo, int hi)
+int	find_last_pos(t_stack *stack, int lo, int hi)
 {
 	int	position;
 	int	last_found;
@@ -69,27 +69,77 @@ int	find_last(t_stack *stack, int lo, int hi)
 	return (last_found);
 }
 
+void	bring_to_top_a(t_data *data, int lo, int hi)
+{
+	int	first_pos;
+	int	last_pos;
+	int	top_cost;
+	int	bot_cost;
 
+	first_pos = find_first_pos(data->stack_a, lo, hi);
+	if (first_pos == -1)
+		return;
+	last_pos = find_last_pos(data->stack_a, lo, hi);
+	top_cost = first_pos;
+	bot_cost = get_stack_size(data->stack_a) - last_pos;
+	if (top_cost <= bot_cost)
+	{
+		while (top_cost > 0)
+		{
+			ra(data);
+			top_cost--;
+		}
+	}
+	else
+	{	
+		while (bot_cost > 0)
+		{
+			rra(data);
+			bot_cost--;
+		}
+	}
+}
 
 
 int	main()
 {
-	int	array [] = {1, 23, 5, 33, 0};
-	t_stack	*ptr;
+	int	array [] = {1, 23, 0, 5, 3};
+	t_data	data;
+	t_stack *ptr;
 	int lo = 2;
 	int hi = 3;
 
-	ptr = build_stack(array, 5);
-	index_stack(ptr, array, 5);
+	ft_bzero(&data,sizeof(data));
 
-	ft_printf("%d\n", get_stack_size(ptr));
-	ft_printf("%d\n", get_stack_size(NULL));
+	data.stack_a = build_stack(array, 5);
+	index_stack(data.stack_a, array, 5);
 
-	ft_printf("%d\n", get_chunk_size(500));
+	ptr = data.stack_a;
+	while(ptr != NULL)
+	{
+		ft_printf("%d, ", ptr->index);
+		ptr = ptr->next;
+	}
+	ft_printf("\n");
 
-	ft_printf("%d\n", is_index_in_range(0, lo, hi));
-	ft_printf("%d\n", find_first(ptr, lo, hi));
+	bring_to_top_a(&data, lo, hi);
+	ptr = data.stack_a;
+	while(ptr != NULL)
+	{
+		ft_printf("%d, ", ptr->index);
+		ptr = ptr->next;
+	}
+	ft_printf("\n");
 
-	ft_stack_clear(&ptr);
+	// ft_printf("%d\n", get_stack_size(ptr));
+	// ft_printf("%d\n", get_stack_size(NULL));
+
+	// ft_printf("%d\n", get_chunk_size(500));
+
+	// ft_printf("%d\n", is_index_in_range(0, lo, hi));
+	// ft_printf("first seen at position: %d\n", find_first_pos(ptr, lo, hi));
+	// ft_printf("last seen at position: %d\n", find_last_pos(ptr, lo, hi));
+
+	ft_stack_clear(&data.stack_a);
 	return (0);
 }
