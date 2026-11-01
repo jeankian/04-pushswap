@@ -100,14 +100,38 @@ void	bring_to_top_a(t_data *data, int lo, int hi)
 	}
 }
 
+void	push_chunks_to_b(t_data *data)
+{
+	int	lo;
+	int	hi;
+	int	stack_a_size;
+	int	chunk_size;
+	int	pushed;
+
+	stack_a_size = get_stack_size(data->stack_a);
+	chunk_size = get_chunk_size(stack_a_size);
+	lo = 0;
+	hi = chunk_size - 1;
+	pushed = 0;
+	while(data->stack_a != NULL)
+	{
+		bring_to_top_a(data, lo, hi);
+		pb(data);
+		pushed++;
+		if (pushed == hi + 1)
+		{
+			lo = lo + chunk_size;
+			hi = hi + chunk_size;
+		}
+	}
+}
+
 
 int	main()
 {
 	int	array [] = {1, 23, 0, 5, 3};
 	t_data	data;
 	t_stack *ptr;
-	int lo = 2;
-	int hi = 3;
 
 	ft_bzero(&data,sizeof(data));
 
@@ -115,6 +139,7 @@ int	main()
 	index_stack(data.stack_a, array, 5);
 
 	ptr = data.stack_a;
+	ft_printf("stack a:");
 	while(ptr != NULL)
 	{
 		ft_printf("%d, ", ptr->index);
@@ -122,8 +147,19 @@ int	main()
 	}
 	ft_printf("\n");
 
-	bring_to_top_a(&data, lo, hi);
+	push_chunks_to_b(&data);
+
 	ptr = data.stack_a;
+	ft_printf("stack a:");
+	while(ptr != NULL)
+	{
+		ft_printf("%d, ", ptr->index);
+		ptr = ptr->next;
+	}
+	ft_printf("\n");
+
+	ptr = data.stack_b;
+	ft_printf("stack b:");
 	while(ptr != NULL)
 	{
 		ft_printf("%d, ", ptr->index);
@@ -141,5 +177,6 @@ int	main()
 	// ft_printf("last seen at position: %d\n", find_last_pos(ptr, lo, hi));
 
 	ft_stack_clear(&data.stack_a);
+	ft_stack_clear(&data.stack_b);
 	return (0);
 }
