@@ -127,16 +127,63 @@ void	push_chunks_to_b(t_data *data)
 }
 
 
+void	bring_to_top_b(t_data *data)
+{
+	int	stack_b_size;
+	int	lo_n_hi;
+	int	first_pos;
+	int	top_cost;
+	int	bot_cost;
+
+	stack_b_size = get_stack_size(data->stack_b);
+	lo_n_hi = stack_b_size - 1;
+	first_pos = find_first_pos(data->stack_b, lo_n_hi, lo_n_hi);
+	if (first_pos == -1)
+		return;
+	top_cost = first_pos;
+	bot_cost = stack_b_size - first_pos;
+	if (top_cost <= bot_cost)
+	{
+		while (top_cost > 0)
+		{
+			rb(data);
+			top_cost--;
+		}
+	}
+	else
+	{	
+		while (bot_cost > 0)
+		{
+			rrb(data);
+			bot_cost--;
+		}
+	}
+}
+
+void	push_chunks_to_a(t_data *data)
+{
+	while(data->stack_b != NULL)
+	{
+		bring_to_top_b(data);
+		pa(data);
+	}
+}
+
+
 int	main()
 {
-	int	array [] = {1, 23, 0, 5, 3};
+	int	array [] = {1, 23, 0, 5, 3, 2, 6, 4, 7};
 	t_data	data;
 	t_stack *ptr;
+	// int lo = 2;
+	// int hi = 3;
 
 	ft_bzero(&data,sizeof(data));
 
-	data.stack_a = build_stack(array, 5);
-	index_stack(data.stack_a, array, 5);
+	data.stack_a = build_stack(array, 9);
+	index_stack(data.stack_a, array, 9);
+
+
 
 	ptr = data.stack_a;
 	ft_printf("stack a:");
@@ -146,6 +193,9 @@ int	main()
 		ptr = ptr->next;
 	}
 	ft_printf("\n");
+
+
+
 
 	push_chunks_to_b(&data);
 
@@ -157,9 +207,30 @@ int	main()
 		ptr = ptr->next;
 	}
 	ft_printf("\n");
+	ptr = data.stack_b;
+	ft_printf("stack b:");
+	while(ptr != NULL)
+	{
+		ft_printf("%d, ", ptr->index);
+		ptr = ptr->next;
+	}
+	ft_printf("\n");
+
+
+
+
+	push_chunks_to_a(&data);
 
 	ptr = data.stack_b;
 	ft_printf("stack b:");
+	while(ptr != NULL)
+	{
+		ft_printf("%d, ", ptr->index);
+		ptr = ptr->next;
+	}
+	ft_printf("\n");
+	ptr = data.stack_a;
+	ft_printf("stack a:");
 	while(ptr != NULL)
 	{
 		ft_printf("%d, ", ptr->index);
