@@ -3,7 +3,6 @@
 #include <limits.h>
 #include "libft.h"
 
-
 int is_flag(char *argv)
 {
 	size_t len;
