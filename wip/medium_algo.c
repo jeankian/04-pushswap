@@ -169,6 +169,11 @@ void	push_chunks_to_a(t_data *data)
 	}
 }
 
+void	sort_medium(t_data *data)
+{
+	push_chunks_to_b(data);
+	push_chunks_to_a(data);
+}
 
 // int	main()
 // {
