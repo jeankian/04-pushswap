@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xin-jili <xin-jili@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: jkian <jkian@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:37:31 by xin-jili          #+#    #+#             */
-/*   Updated: 2026/10/21 13:16:36 by xin-jili         ###   ########.fr       */
+/*   Updated: 2026/11/13 22:57:03 by jkian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,34 @@ typedef struct s_ops
 	int			count_total;
 }	t_ops;
 
+
+
+
+
+//ft_bzero sets default to 0
+//strategy: 0 = adaptive, 1 = simple, 2 = medium, 3 = complex
+//bench: 0 = no bench, 1 = bench
 typedef struct s_data
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_ops	operations;
+	int		disorder_pct;
+	int		bench;
+	int		strategy;
+	char	*strategy_name;
 }	t_data;
 
 //parsing utils
-int		is_flag(char *argv);
+int	save_flags(char *argv, t_data *data);
 void	*cleanup_tree(char **tree);
 int		is_int(char *argv);
 int		*str_to_int_array(char **numstr, int array_size);
 int		is_not_dup(int *array, int array_size);
+
+
+
+
 
 //create stacks utils
 t_stack	*ft_stack_new(int content);
@@ -76,5 +91,26 @@ void	ss(t_data *data);
 void	ra(t_data *data);
 void	rb(t_data *data);
 void	rr(t_data *data);
+
+
+
+
+
+
+
+//stack utils
+int	get_stack_size(t_stack *stack);
+
+//medium algo
+void	push_chunks_to_b(t_data *data);
+void	push_chunks_to_a(t_data *data);
+void	sort_medium(t_data *data);
+
+
+
+
+
+
+
 
 #endif

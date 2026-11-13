@@ -60,23 +60,24 @@ int	parsing(int argc, char **argv, int index, t_stack **stack_a)
 	return (1);
 }
 
-int	process_args(int argc, char **argv, t_stack **stack_a)
+int	process_args(int argc, char **argv, t_data *data)
 {
-	int i;
+	int	i;
 
 	if (argc < 2)
 		return (1);
 	i = 1;
-	while (is_flag(argv[i]))
+	while (save_flags(argv[i], data))
 	{
 		i++;
 		if (argv[i] == NULL)
 			return (1);
 	}
-	if (!parsing(argc, argv, i, stack_a))
+	if (!parsing(argc, argv, i, &data->stack_a))
 		return (0);
 	return (1);
 }
+
 void	print_stack(t_stack *stack)
 {
 

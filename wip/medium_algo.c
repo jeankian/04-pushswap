@@ -169,85 +169,90 @@ void	push_chunks_to_a(t_data *data)
 	}
 }
 
-
-int	main()
+void	sort_medium(t_data *data)
 {
-	int	array [] = {1, 23, 0, 5, 3, 2, 6, 4, 7};
-	t_data	data;
-	t_stack *ptr;
-	// int lo = 2;
-	// int hi = 3;
-
-	ft_bzero(&data,sizeof(data));
-
-	data.stack_a = build_stack(array, 9);
-	index_stack(data.stack_a, array, 9);
-
-
-
-	ptr = data.stack_a;
-	ft_printf("stack a:");
-	while(ptr != NULL)
-	{
-		ft_printf("%d, ", ptr->index);
-		ptr = ptr->next;
-	}
-	ft_printf("\n");
-
-
-
-
-	push_chunks_to_b(&data);
-
-	ptr = data.stack_a;
-	ft_printf("stack a:");
-	while(ptr != NULL)
-	{
-		ft_printf("%d, ", ptr->index);
-		ptr = ptr->next;
-	}
-	ft_printf("\n");
-	ptr = data.stack_b;
-	ft_printf("stack b:");
-	while(ptr != NULL)
-	{
-		ft_printf("%d, ", ptr->index);
-		ptr = ptr->next;
-	}
-	ft_printf("\n");
-
-
-
-
-	push_chunks_to_a(&data);
-
-	ptr = data.stack_b;
-	ft_printf("stack b:");
-	while(ptr != NULL)
-	{
-		ft_printf("%d, ", ptr->index);
-		ptr = ptr->next;
-	}
-	ft_printf("\n");
-	ptr = data.stack_a;
-	ft_printf("stack a:");
-	while(ptr != NULL)
-	{
-		ft_printf("%d, ", ptr->index);
-		ptr = ptr->next;
-	}
-	ft_printf("\n");
-
-	// ft_printf("%d\n", get_stack_size(ptr));
-	// ft_printf("%d\n", get_stack_size(NULL));
-
-	// ft_printf("%d\n", get_chunk_size(500));
-
-	// ft_printf("%d\n", is_index_in_range(0, lo, hi));
-	// ft_printf("first seen at position: %d\n", find_first_pos(ptr, lo, hi));
-	// ft_printf("last seen at position: %d\n", find_last_pos(ptr, lo, hi));
-
-	ft_stack_clear(&data.stack_a);
-	ft_stack_clear(&data.stack_b);
-	return (0);
+	push_chunks_to_b(data);
+	push_chunks_to_a(data);
 }
+
+// int	main()
+// {
+// 	int	array [] = {1, 23, 0, 5, 3, 2, 6, 4, 7};
+// 	t_data	data;
+// 	t_stack *ptr;
+// 	// int lo = 2;
+// 	// int hi = 3;
+
+// 	ft_bzero(&data,sizeof(data));
+
+// 	data.stack_a = build_stack(array, 9);
+// 	index_stack(data.stack_a, array, 9);
+
+
+
+// 	ptr = data.stack_a;
+// 	ft_printf("stack a:");
+// 	while(ptr != NULL)
+// 	{
+// 		ft_printf("%d, ", ptr->index);
+// 		ptr = ptr->next;
+// 	}
+// 	ft_printf("\n");
+
+
+
+
+// 	push_chunks_to_b(&data);
+
+// 	ptr = data.stack_a;
+// 	ft_printf("stack a:");
+// 	while(ptr != NULL)
+// 	{
+// 		ft_printf("%d, ", ptr->index);
+// 		ptr = ptr->next;
+// 	}
+// 	ft_printf("\n");
+// 	ptr = data.stack_b;
+// 	ft_printf("stack b:");
+// 	while(ptr != NULL)
+// 	{
+// 		ft_printf("%d, ", ptr->index);
+// 		ptr = ptr->next;
+// 	}
+// 	ft_printf("\n");
+
+
+
+
+// 	push_chunks_to_a(&data);
+
+// 	ptr = data.stack_b;
+// 	ft_printf("stack b:");
+// 	while(ptr != NULL)
+// 	{
+// 		ft_printf("%d, ", ptr->index);
+// 		ptr = ptr->next;
+// 	}
+// 	ft_printf("\n");
+// 	ptr = data.stack_a;
+// 	ft_printf("stack a:");
+// 	while(ptr != NULL)
+// 	{
+// 		ft_printf("%d, ", ptr->index);
+// 		ptr = ptr->next;
+// 	}
+// 	ft_printf("\n");
+
+// 	// ft_printf("%d\n", get_stack_size(ptr));
+// 	// ft_printf("%d\n", get_stack_size(NULL));
+
+// 	// ft_printf("%d\n", get_chunk_size(500));
+
+// 	// ft_printf("%d\n", is_index_in_range(0, lo, hi));
+// 	// ft_printf("first seen at position: %d\n", find_first_pos(ptr, lo, hi));
+// 	// ft_printf("last seen at position: %d\n", find_last_pos(ptr, lo, hi));
+
+// 	ft_stack_clear(&data.stack_a);
+// 	ft_stack_clear(&data.stack_b);
+// 	return (0);
+// }

@@ -3,18 +3,24 @@
 #include <limits.h>
 #include "libft.h"
 
-int is_flag(char *argv)
+int	save_flags(char *argv, t_data *data)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(argv) + 1;
-	if (ft_strncmp(argv, "--simple", len) == 0 || 
-		ft_strncmp(argv, "--medium", len) == 0 || 
-		ft_strncmp(argv, "--complex", len) == 0 || 
-		ft_strncmp(argv, "--adaptive", len) == 0 || 
-		ft_strncmp(argv, "--bench", len) == 0)
-		return (1);
-	return (0);
+	if (ft_strncmp(argv, "--simple", len) == 0)
+		data->strategy = 1;
+	else if (ft_strncmp(argv, "--medium", len) == 0)
+		data->strategy = 2;
+	else if (ft_strncmp(argv, "--complex", len) == 0)
+		data->strategy = 3;
+	else if (ft_strncmp(argv, "--adaptive", len) == 0)
+		data->strategy = 0;
+	else if (ft_strncmp(argv, "--bench", len) == 0)
+		data->bench = 1;
+	else
+		return (0);
+	return (1);
 }
 
 void	*cleanup_tree(char **tree)
